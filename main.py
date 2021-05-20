@@ -1,12 +1,13 @@
-from monte_carlo import solve
-def getf(text : str):
-    return eval(f"lambda x : {input(text)}")
+from mc_method import calc1, calc2
+from numpy import sin, cos, pi 
 
-
+def get_func(msg):
+	return eval(f"lambda x, y : {input(msg)}")
+	
 def main():
-    f = getf("Enter f(x) = ")
-    a, b, n = tuple(map(int, input("Enter a,b,n: ").split()))
-    print(f"Integral = {solve(f, a, b, n)}")
+	f = get_func('Enter f(x, y) = ')
+	n = int(input("Enter n: "))
+	print(f"Solution  = {calc1(f, n)}\nSolution 2 = {calc2(f, n)}")
 
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+	main()
